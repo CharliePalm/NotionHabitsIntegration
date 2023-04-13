@@ -26,8 +26,6 @@ class ConfigGenerator:
                     self.done()
                     return
         except Exception as e:
-            print(e.with_traceback())
-            print('exception encountered')
             pass
         
         for option in self.options:
