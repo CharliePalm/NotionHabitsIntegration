@@ -4,7 +4,9 @@ This is a way of automating all processes in EllieGons HabitTracker Notion templ
 
 The only thing you need to do manually is create your habits. Follow the examples in root -> habits and those DB objects will be used by the script. 
 
-Optionally, you can add a "Days" property and add weekdays as a comma separated list (ex: Monday, Wednesday, Saturday) to override the habit's frequency. The script also uses the habit's icon as the daily habit's icon.
+Optionally, you can add a "Days" property and add days of the week you'd like the habit to be activated on as a comma separated list (ex: Monday, Wednesday, Saturday) to override the habit's frequency. The days of the week you select will always take precedence over frequency. 
+
+The script also uses the habit's icon as the daily habit's icon.
 
 # Usage and Requirements
 Base requirements to use this repo are python and git naturally.
