@@ -8,12 +8,18 @@ Optionally, you can add a "Days" property and add weekdays as a comma separated 
 
 # Usage
 Base requirements to use this repo are python and git naturally.
+You'll need to create a Notion integration and give it access to your habit's page (https://www.notion.so/help/create-integrations-with-the-notion-api)
 Create a config by running the following in a terminal window:
 
     git clone https://github.com/CharliePalm/NotionHabitsIntegration
     cd NotionHabitsIntegration
     pip install -r requirements.txt
     python config.py
+(When creating your config, the script will ask you for several entity IDs. If you're unfamiliar with how to find them, you simply copy the link of the page and cut out the first ID string. Basically, the link will look like:
+
+    https://www.notion.so/{{user name}}/{{ID YOU WANT}}?v={{ID YOU DONT WANT}}
+Just cut out {{ID YOU WANT}} and feed it to the script when prompted. It checks every ID you give it so you'll know if you make a mistake.
+
 Then
 
     python daily_job.py
