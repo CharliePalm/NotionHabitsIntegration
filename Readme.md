@@ -16,7 +16,7 @@ Create a config by running the following in a terminal window:
     cd NotionHabitsIntegration
     pip install -r requirements.txt
     python config.py
-(When creating your config, the script will ask you for several entity IDs. If you're unfamiliar with how to find them, you simply copy the link of the page and cut out the first ID string. Basically, the link will look like:
+When creating your config, the script will ask you for several entity IDs. If you're unfamiliar with how to find them, you simply copy the link of the page and cut out the first ID string. Basically, the link will look like:
 
     https://www.notion.so/{{user name}}/{{ID YOU WANT}}?v={{ID YOU DONT WANT}}
 Just cut out {{ID YOU WANT}} and feed it to the script when prompted. It checks every ID you give it so you'll know if you make a mistake.
