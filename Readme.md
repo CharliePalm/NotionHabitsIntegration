@@ -38,6 +38,8 @@ If you're interested in automating this to run daily, that can be done quite eas
 # Contributing
 Feel free to submit a pull request, and I'll review it. Otherwise you're free to fork this repository and do whatever you like with it. I know my code perhaps isn't a shining example, but please provide unit test coverage if adding new functionality.
 
-# Reporting bugs
-Simply add a new issue and I'll check it out.
+# Reporting Bugs
+Simply add a new issue with title "BUG: {{your bug title here}}" with a brief description and I'll check it out.
 
+# Requesting Features
+Add a new issue with title "FEATURE REQ: {{your feature request title here}}" with a brief description and I'll check it out. Alternatively, feel free to submit a pull request or fork :)
