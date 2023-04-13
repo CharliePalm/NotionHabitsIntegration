@@ -87,7 +87,7 @@ class ConfigGenerator:
     def configure_cycle_db_id(self):
         r = None
         while r == None:
-            self.config['cycles_db_id'] = input('\nPlease provide the ID to your cycles DB: ')
+            self.config['cycles_db_id'] = input('Please provide the ID to your cycles DB: ')
 
             print('...testing your ID and api key...')
             r = self.test_db(self.config['cycles_db_id'])
@@ -116,7 +116,7 @@ class ConfigGenerator:
         print('\nall good!\n')
         
     def load_habits(self):
-        print('loading your habits into the config file. This could take a few seconds.')
+        print('loading your habits into the config file.')
 
         self.config['habits'] = []
         if not self.habits:
@@ -130,25 +130,32 @@ class ConfigGenerator:
                 return
             self.habits = resp.json()['results']
         for habit in self.habits:
+            if not habit['properties']['Frequency']['select'] or 'name' not in habit['properties']['Frequency']['select']:
+                if not ('Days' in habit['properties'] and habit['properties']['Days']['rich_text']):
+                    print('one or more of your habits is missing a frequency. Please update accordingly.')
+                    exit(0)
+                habit['properties']['Frequency']['select'] = {
+                    'name': None
+                }
             self.config['habits'].append({
                 'name': habit['properties']['Name']['title'][0]['plain_text'],
                 'frequency': habit['properties']['Frequency']['select']['name'],
                 'id': habit['id'],
-                'icon': habit['icon']['emoji'],
+                'icon': utils.get_icon(habit),
+                'icon_type': utils.get_icon_type(habit),
                 'status': habit['properties']['Status']['select']['name'],
                 'days': habit['properties']['Days']['rich_text'][0]['text']['content'] if 'Days' in habit['properties'] and habit['properties']['Days']['rich_text'] else None,
             })
-
+    
     def test_db(self, db_id):
         r = self.bridge.query(db_id, {})
-        if r.status_code != 200 or not r.json()['results']:
+        if r.status_code != 200 or 'results' not in r.json():
             print('error encountered when querying db with id: ' + db_id)
             print('response received from notion: ')
             print(r.json())
             return None
         return r.json()['results']
     
-
 class ConfigObject:
     habits = []
     cycles_db_id = ''

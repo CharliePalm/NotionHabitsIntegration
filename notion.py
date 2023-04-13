@@ -18,7 +18,7 @@ class Notion:
         filtered_habits = self.get_filtered_habits()
         for habit in filtered_habits:
             properties = {
-                'Title': {
+                'Name': {
                     'title': [{'type': 'text', 'text': {'content': habit['name']}}],
                 },
                 'Date': {
@@ -48,7 +48,7 @@ class Notion:
                     }],
                 },
             }
-            self.bridge.create_db_page(self.config.habit_tracker_db_id, properties, habit['icon'])
+            self.bridge.create_db_page(self.config.habit_tracker_db_id, properties, habit['icon'], habit['icon_type'])
             
     def get_current_cycle_id(self):
         cycle = self.get_active_cycle()
@@ -113,7 +113,7 @@ class Notion:
                 }
             }
         }
-        result = self.bridge.create_db_page(self.config.cycles_db_id, new_cycle_properties, utils.get_icon(active_cycle), False)
+        result = self.bridge.create_db_page(self.config.cycles_db_id, new_cycle_properties, utils.get_icon(active_cycle), utils.get_icon_type(active_cycle))
         return result.json() if result else None
         
         
