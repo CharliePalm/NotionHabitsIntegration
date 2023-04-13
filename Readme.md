@@ -31,6 +31,8 @@ Just cut out {{ID YOU WANT}} and feed it to the script when prompted. It checks 
 Then
 
     python daily_job.py
+Note that the daily_job script does NOT query your current habits and instead uses habits that it has loaded into the config to prevent bloating Notion's API. If you make changes to your habits that you'd like reflected by the daily_job script you can run config.py, choose correct existing data, and then option 5.
+
 If you're interested in automating this to run daily, that can be done quite easily through your OSs cron and is a quick google away. It's made my life a lot easier - would recommend!
 
 # Contributing
