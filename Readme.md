@@ -6,9 +6,10 @@ The only thing you need to do manually is create your habits. Follow the example
 
 Optionally, you can add a "Days" property and add weekdays as a comma separated list (ex: Monday, Wednesday, Saturday) to override the habit's frequency. The script also uses the habit's icon as the daily habit's icon.
 
-# Usage
+# Usage and Requirements
 Base requirements to use this repo are python and git naturally.
-You'll need to create a Notion integration and give it access to your habit's page (https://www.notion.so/help/create-integrations-with-the-notion-api)
+You'll need to create a Notion integration and give it access to your habit's page. Tutorial here: https://www.notion.so/help/create-integrations-with-the-notion-api
+
 Create a config by running the following in a terminal window:
 
     git clone https://github.com/CharliePalm/NotionHabitsIntegration
