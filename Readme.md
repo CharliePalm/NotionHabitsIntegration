@@ -34,7 +34,7 @@ When creating your config, the script will ask you for several entity IDs. If yo
     https://www.notion.so/{{user name}}/{{ID YOU WANT}}?v={{ID YOU DONT WANT}}
 Just cut out {{ID YOU WANT}} and feed it to the script when prompted. It checks every ID you give it so you'll know if you make a mistake.
 
-Then in that same terminal window
+After you're done with that, in the same terminal window:
 
     python daily_job.py
 Note that the daily_job script does NOT query your current habits and instead uses habits that it has loaded into the config to prevent bloating Notion's API. If you make changes to your habits that you'd like reflected by the daily_job script you can run config.py, choose correct existing data, and then option 5.
