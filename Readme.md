@@ -1,6 +1,6 @@
 # Automating Notion
 
-This is a way of automating all processes in EllieGons HabitTracker Notion template. I love their work and thought that creating something like this to go along with it would be the cherry on top. Check out more of their stuff on their reddit profile: https://www.reddit.com/user/EllieGons/
+This is a way of automating all processes in EllieGons' HabitTracker Notion template. I love their work and thought that creating something like this to go along with it would be the cherry on top. Check out more of their stuff on their reddit profile: https://www.reddit.com/user/EllieGons/
 
 # Getting Notion Setup
 Add the habits template to your notion (https://elliegons.notion.site/Habits-Template-6b08b5491f40436faf7f8e1acbb6c5b5)
