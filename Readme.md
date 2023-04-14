@@ -15,7 +15,9 @@ The script also uses the habit's icon as the daily habit's icon. This is somewha
 
 # Usage and Requirements
 You'll need python and git. I know that a lot of people using this may not have a lot of programming experience or familiarity so I'll do my best to guide closely. You can skip to the code blocks if you feel confident in your system setup/API knowledge.
+
 Get python here: https://www.python.org/downloads/
+
 Install git with these instructions: https://github.com/git-guides/install-git
 
 You'll need to create a Notion integration and give it access to your habit's page. Tutorial here: https://www.notion.so/help/create-integrations-with-the-notion-api
