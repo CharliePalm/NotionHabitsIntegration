@@ -2,7 +2,7 @@
 
 This is a way of automating all processes in EllieGons' HabitTracker Notion template. I love their work and thought that creating something like this to go along with it would be the cherry on top. Check out more of their stuff on their reddit profile: https://www.reddit.com/user/EllieGons/
 
-# Getting Notion Setup
+## Getting Notion Setup
 Add the habits template to your notion (https://elliegons.notion.site/Habits-Template-6b08b5491f40436faf7f8e1acbb6c5b5)
 
 From here, the only thing you need to do manually is create your habits. Follow the examples in root -> habits and those DB objects will be used by the script. 
@@ -13,7 +13,7 @@ Changing the Habit's status from "On" will prevent the script from creating dail
 
 The script also uses the habit's icon as the daily habit's icon. This is somewhat problematic when using external files. I'd recommend using the notion icons or emojis.
 
-# Usage and Requirements
+## Usage and Requirements
 You'll need python and git. I know that a lot of people using this may not have a lot of programming experience or familiarity so I'll do my best to guide closely. You can skip to the code blocks if you feel confident in your system setup/API knowledge.
 
 Get python here: https://www.python.org/downloads/
@@ -45,11 +45,15 @@ For those using this without much programming experience, when you run this proc
     python daily_job.py
 If you're interested in automating this to run daily, that can be done quite easily through your OSs cron and is a quick google away. It's made my life a lot easier - would recommend!
 
-# Contributing
+## Buy me a coffee :)
+<a href="https://www.buymeacoffee.com/charliepalm" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
+## Contributing
 Feel free to submit a pull request, and I'll review it. Otherwise you're free to fork this repository and do whatever you like with it. I know my code perhaps isn't a shining example, but please provide unit test coverage if adding new functionality.
 
-# Reporting Bugs
+## Reporting Bugs
 Simply add a new issue with title "BUG: {{your bug title here}}" with a brief description and I'll check it out.
 
-# Requesting Features
+## Requesting Features
 Add a new issue with title "FEATURE REQ: {{your feature request title here}}" with a brief description and I'll check it out. Alternatively, feel free to submit a pull request or fork :)
