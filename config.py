@@ -1,6 +1,7 @@
 import utils
 import json
 import os
+from model import Frequency
 
 class ConfigGenerator:
     headers = {}
@@ -14,23 +15,24 @@ class ConfigGenerator:
             self.configure_cycle_dates,
             self.configure_habits_db_id,
             self.load_habits,
+            self.configure_frequency,
         ]
         try:
             with open('./config.json', 'r') as fp:
                 self.config = json.load(fp)
                 self.bridge = utils.Bridge(self.config['api_key']) if 'api_key' in self.config else None
-                done = self.with_config_setup()
-                if not done:
-                    print('cool, let\'s get started!')
-                else:
-                    self.done()
-                    return
         except Exception as e:
             pass
         
-        for option in self.options:
-            option()
-        
+
+    def run(self):
+        done = False
+        if self.config:
+            done = self.with_config_setup()
+        if not done:
+            print('cool, let\'s get started:')
+            for option in self.options:
+                option()
         self.done()
         
     def done(self):
@@ -55,6 +57,7 @@ class ConfigGenerator:
         print('3 - days of the month to create new cycles')
         print('4 - habit database id (root -> Habits)')
         print('5 - update habits (use if you changed the frequency or tracking status of a habit and want it updated in your config)')
+        print('6 - update frequency')
         while 1:
             r = input('enter your selections as a comma separated list please (ex: 1, 2, 4): ')
             try:
@@ -69,7 +72,7 @@ class ConfigGenerator:
                 
                 
     def configure_api_key(self):
-        self.config['api_key'] = input('What is your integration key? it should look like secret_ followed by a lot of numbers and letters: ')
+        self.config['api_key'] = input('What is your integration key? it should look like secret_ followed by a lot of numbers and letters (this tool does NOT send your API key to anyone but Notion): ')
         while self.config['api_key'][0:7] != 'secret_':
             self.config['api_key'] = input('That doesn\'t look quite right. Are you sure that\'s your api key? Please try again: ')
 
@@ -114,10 +117,15 @@ class ConfigGenerator:
             print('...testing your ID and api key...')
             r = self.habits = self.test_db(self.config['habits_db'])
         print('\nall good!\n')
+
+
+    def configure_frequency(self):
+        freq = None
+        while freq not in map(lambda x: x.value, Frequency):
+            freq = input('How frequently would you like to run your job? 0 = daily, 1 = weekly, 2 = monthly, 3 = cycle by cycle basis: ').replace(' ', '')
+        self.config['job_frequency'] = freq
         
     def load_habits(self):
-        print('loading your habits into the config file.')
-
         self.config['habits'] = []
         if not self.habits:
             if 'habits_db' not in self.config or not self.config['habits_db']:
@@ -155,7 +163,7 @@ class ConfigGenerator:
             print(r.json())
             return None
         return r.json()['results']
-    
+
 class ConfigObject:
     habits = []
     cycles_db_id = ''
@@ -163,6 +171,7 @@ class ConfigObject:
     api_key = ''
     habit_tracker_db_id = ''
     habits_db = ''
+    job_frequency: Frequency = '0'
     def __init__(self):
         try:
             my_file = os.path.realpath(__file__)
@@ -178,7 +187,8 @@ if __name__ == '__main__':
     print('\nhello! let\'s get you set up!\n')
     print('for future reference, "root" refers to the root directory of the habit tracker')
 
-    config = ConfigGenerator()
+    config_generator = ConfigGenerator()
+    config_generator.run()
 
-    print('here\'s what I have for your config! Saving it to notion/config.json - you can edit it anytime you need to or run this script again!')
-    print(config.config)
+    print('\nhere\'s what I have for your config! Saving it to notion/config.json - you can edit it anytime you need to or run this script again!\n')
+    print(config_generator.config)

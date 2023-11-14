@@ -154,6 +154,7 @@ cython_debug/
 
 # user configs
 config.json
+notion_secrets.txt
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

@@ -2,3 +2,4 @@ datetime
 typing
 holidays
 requests
+freezegun

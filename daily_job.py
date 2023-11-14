@@ -1,5 +1,5 @@
 
 from notion import Notion
 n = Notion()
-n.create_daily_habits()
+n.run()
 print('done')

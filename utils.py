@@ -4,6 +4,8 @@ import json
 import requests
 
 def get_icon(obj) -> str | None:
+    if not obj:
+        return None
     if obj and 'icon' in obj and 'type' in obj['icon']:
         icon = obj['icon'][obj['icon']['type']]
         if obj['icon']['type'] == 'file':
@@ -56,7 +58,7 @@ class Bridge:
         if response.status_code != 200:
             print('UTIL: error encountered creating page')
             print(response.json())
-        return response
+        return response.json()
     
     def update_db_page(self, properties_to_update, id):
         payload = {
